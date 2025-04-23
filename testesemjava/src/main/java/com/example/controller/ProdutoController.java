@@ -1,7 +1,7 @@
 package com.example.controller;
 
-import com.exemplo.model.Produto;
-import com.exemplo.service.ProdutoService;
+import com.example.model.Produto;
+import com.example.service.ProdutoService;
 
 public class ProdutoController {
     
