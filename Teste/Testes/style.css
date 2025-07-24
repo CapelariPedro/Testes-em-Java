@@ -1,0 +1,83 @@
+/* Estilo base (mobile first) */
+.table-meus-pareceres {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1em;
+    min-width: unset;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.table-meus-pareceres thead tr {
+    background-color: #129155;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    display: none; /* Esconde o cabeçalho em telas pequenas */
+}
+
+.table-meus-pareceres th,
+.table-meus-pareceres td {
+    padding: 10px 8px;
+    text-align: left;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.table-meus-pareceres tbody tr {
+    border-bottom: 1px solid #dddddd;
+    display: block;
+    margin-bottom: 15px;
+    background: #fff;
+}
+
+.table-meus-pareceres tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.table-meus-pareceres tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.table-meus-pareceres tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+/* Adiciona labels nos dados usando data-label */
+.table-meus-pareceres td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+    color: #129155;
+}
+
+/* Estilo para telas maiores */
+@media (min-width: 400px) {
+    .table-meus-pareceres {
+        font-size: 0.9em;
+        min-width: 400px;
+    }
+    .table-meus-pareceres thead tr {
+        display: table-row;
+    }
+    .table-meus-pareceres th,
+    .table-meus-pareceres td {
+        display: table-cell;
+        width: auto;
+        padding: 12px 15px;
+        text-align: center;
+    }
+    .table-meus-pareceres td:before {
+        display: none;
+    }
+    .table-meus-pareceres tbody tr {
+        display: table-row;
+        margin-bottom: 0;
+        background: none;
+    }
+}
+

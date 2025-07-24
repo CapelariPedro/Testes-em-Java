@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Teste Tabela</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Teste tabela</h1>
+
+        <div class="barra-tabela">
+            <select id="coluna-select">
+                <option value="codigo">Código</option>
+                <option value="emitente">Emitente</option>
+                <option value="cnpj">CNPJ Tomador</option>
+            </select>
+            <button id="ordem-crescente" title="Ordem Crescente">
+                <img class="fa-solid fa-arrow-up" src="edit_arrow_up_25dp_000000_FILL0_wght400_GRAD0_opsz24.png">
+            </button>
+            <button id="ordem-decrescente" title="Ordem Decrescente">
+                <img class="fa-solid fa-arrow-down"  src="edit_arrow_down_25dp_000000_FILL0_wght400_GRAD0_opsz24.png">
+            </button>
+            <button id="filtro" title="Filtrar">
+                <img class="fa-solid fa-filter" src="filter_alt_25dp_000000_FILL0_wght400_GRAD0_opsz24.png">
+            </button>
+        </div>
+        <table class="table-meus-pareceres" id="tabela-meus-pareceres">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Codigo</th>
+                    <th>Emitente</th>
+                    <th>cnpj tomador</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+        <script src="script.js"></script>
+    </body>
+</html>
