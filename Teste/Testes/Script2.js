@@ -1,16 +1,10 @@
-// Defina os dados em escopo global
-const dados = [
-    { id: 1, nome: "João", cnpj: "111111" },
-    { id: 2, nome: "Maria", cnpj: "222222" },
-    { id: 3, nome: "Pedro", cnpj: "333333" },
-    { id: 4, nome: "Ana", cnpj: "000000" }
-];
+let dados = []; // Agora será preenchido via API
+let ordemAtual = 'asc';
 
 // Função para popular o combo box com as chaves do JSON
 function popularComboBoxComChaves(dados) {
     const select = document.getElementById("coluna-select");
-    select.innerHTML = ""; // Limpa opções existentes
-
+    select.innerHTML = "";
     if (dados.length > 0) {
         Object.keys(dados[0]).forEach(chave => {
             const option = document.createElement("option");
@@ -37,13 +31,8 @@ function popularTabela() {
         checkbox.value = item.id;
         tdCheckbox.appendChild(checkbox);
 
-        // Adiciona evento para mudar cor da linha ao selecionar
         checkbox.addEventListener('change', function() {
-            if (checkbox.checked) {
-                linha.style.backgroundColor = '#c6f7d0'; // verde claro
-            } else {
-                linha.style.backgroundColor = ''; // volta ao padrão
-            }
+            linha.style.backgroundColor = checkbox.checked ? '#c6f7d0' : '';
         });
 
         // Código
@@ -63,16 +52,9 @@ function popularTabela() {
     });
 }
 
-// Ao carregar a página, popula a tabela e o combo box
-document.addEventListener("DOMContentLoaded", function() {
-    popularTabela();
-    popularComboBoxComChaves(dados);
-});
-
-let ordemAtual = 'asc'; // Guarda a ordem atual
-
+// Função para ordenar e atualizar a tabela
 function ordenarTabela(ordem) {
-    ordemAtual = ordem; // Atualiza a ordem atual
+    ordemAtual = ordem;
     const coluna = document.getElementById("coluna-select").value;
     if (!coluna) return;
 
@@ -85,16 +67,29 @@ function ordenarTabela(ordem) {
     popularTabela();
 }
 
-// Eventos dos botões de ordenação
-document.getElementById("ordem-crescente").addEventListener("click", function() {
-    ordenarTabela('asc');
-});
+// Buscar dados da API Flask ao carregar a página
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('http://localhost:5000/api/dados') // Altere para a URL da sua API Flask
+        .then(response => response.json())
+        .then(json => {
+            dados = json;
+            popularComboBoxComChaves(dados);
+            popularTabela();
+        })
+        .catch(error => {
+            alert('Erro ao carregar dados da API!');
+            console.error(error);
+        });
+    
+    document.getElementById("ordem-crescente").addEventListener("click", function() {
+        ordenarTabela('asc');
+    });
 
-document.getElementById("ordem-decrescente").addEventListener("click", function() {
-    ordenarTabela('desc');
-});
+    document.getElementById("ordem-decrescente").addEventListener("click", function() {
+        ordenarTabela('desc');
+    });
 
-// Evento para a combo box ser a âncora da ordenação
-document.getElementById("coluna-select").addEventListener("change", function() {
-    ordenarTabela(ordemAtual);
+    document.getElementById("coluna-select").addEventListener("change", function() {
+        ordenarTabela(ordemAtual);
+    });
 });
