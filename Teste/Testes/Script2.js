@@ -1,4 +1,4 @@
-let dados = []; // Agora será preenchido via API
+8let dados = []; // Agora será preenchido via API
 let ordemAtual = 'asc';
 
 // Função para popular o combo box com as chaves do JSON
@@ -92,4 +92,55 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("coluna-select").addEventListener("change", function() {
         ordenarTabela(ordemAtual);
     });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const tabela = document.getElementById("minhaTabela");
+  const select = document.getElementById("comboCabecalho");
+  const btnAsc = document.getElementById("btnAsc");
+  const btnDesc = document.getElementById("btnDesc");
+
+  // Popula o combo com os cabeçalhos
+  const cabecalhos = tabela.querySelectorAll("thead th");
+  cabecalhos.forEach((th, index) => {
+    const option = document.createElement("option");
+    option.value = index;
+    option.textContent = th.textContent.trim();
+    select.appendChild(option);
+  });
+
+  // Função de ordenação
+  function ordenarTabela(indiceColuna, crescente = true) {
+    const tbody = tabela.querySelector("tbody");
+    const linhas = Array.from(tbody.querySelectorAll("tr"));
+
+    linhas.sort((a, b) => {
+      const textoA = a.children[indiceColuna].textContent.trim();
+      const textoB = b.children[indiceColuna].textContent.trim();
+
+      // Tenta converter para número se possível
+      const valorA = isNaN(textoA) ? textoA : parseFloat(textoA);
+      const valorB = isNaN(textoB) ? textoB : parseFloat(textoB);
+
+      if (valorA < valorB) return crescente ? -1 : 1;
+      if (valorA > valorB) return crescente ? 1 : -1;
+      return 0;
+    });
+
+    // Reaplica as linhas ordenadas
+    linhas.forEach(linha => tbody.appendChild(linha));
+  }
+
+  // Eventos de clique dos botões
+  btnAsc.addEventListener("click", () => {
+    const indice = parseInt(select.value, 10);
+    ordenarTabela(indice, true);
+  });
+
+  btnDesc.addEventListener("click", () => {
+    const indice = parseInt(select.value, 10);
+    ordenarTabela(indice, false);
+  });
 });
