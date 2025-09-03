@@ -1,0 +1,187 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #fafbfc;
+}
+
+.modal-filtro{
+    position: absolute;
+    min-width: 320px;
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #004d00;
+    border-radius: 8px;
+    background: #fff;
+    padding: 18px 16px 16px 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.input-data {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.input-block {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.input-block label {
+    font-size: 13px;
+    color: #004d00;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+.date-separator {
+    align-self: center;
+    margin: 0 8px;
+    font-weight: bold;
+    color: #004d00;
+    font-size: 18px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 1px solid #a0cea0;
+    border-radius: 4px;
+    background: #f6fff6;
+    font-size: 15px;
+    color: #222;
+}
+
+input[type="text"]:focus {
+    outline: 2px solid #004d00;
+}
+
+.calendar-container {
+    position: relative;
+    background: white;
+    border: 1px solid #004d00;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 12px;
+    margin-top: 2px;
+    max-width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.header #header-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #004d00;
+}
+
+.header .nav-btn {
+    cursor: pointer;
+    font-weight: bold;
+    background: none;
+    border: none;
+    font-size: 20px;
+    user-select: none;
+    color: #004d00;
+    padding: 2px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.header .nav-btn:hover {
+    background: #e1e7ed;
+}
+
+table {
+    border-collapse: separate;
+    width: 100%;
+    border-spacing: 8px; 
+    user-select: none;
+}
+
+
+th, td {
+    text-align: center;
+    padding: 10px 0;
+    width: 14.28%;
+}
+
+th {
+    font-weight: normal;
+    color: #666;
+    font-size: 14px;
+}
+
+td {
+    cursor: pointer;
+    border-radius: 8px;             /* Deixa os dias arredondados */
+    font-size: 14px;
+    background: #f6fff6;            /* Cor de fundo padrão dos dias */
+    transition: background 0.2s;
+}
+
+td:hover {
+    background-color: #e1e7ed;
+}
+
+td.selected-start,
+td.selected-end {
+    background-color: #004d00;
+    color: white;
+    font-weight: bold;
+}
+
+td.in-range {
+    background-color: #a0cea0;
+}
+
+.mode-toggle {
+    margin: 10px 0 14px 0;
+    text-align: center;
+}
+
+.mode-toggle button {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+    padding: 4px 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.mode-toggle button.active {
+    background: #004d00;
+    color: white;
+    border: 1px solid #004d00;
+}
+
+#clear-btn {
+    margin-top: 12px;
+    background: #f0f0f0;
+    border: 1px solid #004d00;
+    color: #004d00;
+    padding: 6px 18px;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+}
+
+#clear-btn:hover {
+    background: #004d00;
+    color: #fff;
+}
